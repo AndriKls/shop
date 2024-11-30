@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Index.as_view(), name='index'),
     path('superheroes/', include('superheroes.urls')),
+    path('chucknorris/', include('chucknorris.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -23,7 +23,7 @@
                 <div class="navbar-nav">
                     <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{%url 'index'%}">Pealeht</a>
                     <a class="nav-link {% if request.resolver_match.url_name == 'superheroes' %}active{% endif %}" href="{%url 'superheroes'%}">Superkangelased</a>
-                    <a class="nav-link" href="#"></a>
+                    <a class="nav-link {% if request.resolver_match.url_name == 'chuck' %}active{% endif %}" href="{%url 'chuck'%}">Chuck Norris</a>
                     <a class="nav-link"></a>
                 </div>
             </div>
