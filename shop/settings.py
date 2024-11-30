@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'shop',
     'superheroes',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -122,3 +125,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+MEDIA_ROOT = BASE_DIR / "uploads"
+
+MEDIA_URL = "/media/"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'

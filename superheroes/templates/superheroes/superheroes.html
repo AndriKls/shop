@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+
+{% block title %}Superkangelased{% endblock title %}
+{% block css_files %}
+{% endblock css_files %}
+
+{% block body %}
+
+<div class="container">
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <a href="{%url 'superhero_create'%}" class="btn btn-primary">Lisa uus</a>
+</div>
+
+
+<table class="table table-light">
+    <thead>
+      <tr>
+        <th scope="col">Nr</th>
+        <th scope="col">Nimi</th>
+        <th scope="col">Kodanikunimi</th>
+        <th scope="col">Asukoht</th>
+        <th scope="col">Valikud</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for hero in superheroes %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{hero.name}}</td>
+        <td>{{hero.civillian_name}}</td>
+        <td>{{hero.location}}</td>
+        <td>
+          <a class="btn btn-warning btn-sm" href="{{hero.id}}">Detailid</a>
+          <a class="btn btn-primary btn-sm" href="{{hero.id}}/update/">Muuda</a>
+          <a class="btn btn-danger btn-sm" href="{{hero.id}}/delete/">Kustuta</a>
+        </td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+  
+{% endblock body %}
