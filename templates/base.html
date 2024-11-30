@@ -24,7 +24,8 @@
                     <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{%url 'index'%}">Pealeht</a>
                     <a class="nav-link {% if request.resolver_match.url_name == 'superheroes' %}active{% endif %}" href="{%url 'superheroes'%}">Superkangelased</a>
                     <a class="nav-link {% if request.resolver_match.url_name == 'chuck' %}active{% endif %}" href="{%url 'chuck'%}">Chuck Norris</a>
-                    <a class="nav-link"></a>
+                    <a class="nav-link {% if request.resolver_match.url_name == 'weather_search' or request.resolver_match.url_name == 'weather_result' %}
+                        active{% endif %}" href="{%url 'weather_search'%}">Ilmavõlur</a>
                 </div>
             </div>
         </div> 

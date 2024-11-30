@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+
+{% block title %}Ilm{% endblock title %}
+
+
+{% block body %}
+
+<div class="container my-5">
+    <h1 class="text-center">{{ weather.city }}</h1>
+    {% if weather.error %}
+        <p class="text-danger text-center">{{ weather.error }}</p>
+    {% else %}
+        <p class="text-center">Temperatuur: <strong>{{ weather.temperature }}°C</strong></p>
+        <p class="text-center">Tundub nagu: <em>{{ weather.feels_like }}°C</em></p>
+        <p class="text-center">Tuulekiirus: <em>{{ weather.wind_speed}}m/s</em></p>
+        <p class="text-center">Tuulesuund: <em>{{ weather.wind_direction }}°</em></p>
+        <div class="text-center">
+            <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Weather icon">
+        </div>
+    {% endif %}
+    <div class="text-center mt-4">
+        <a href="{% url 'weather_search' %}" class="btn btn-secondary">Tagasi</a>
+    </div>
+</div>
+{% endblock body %}
