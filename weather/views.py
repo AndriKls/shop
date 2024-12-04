@@ -2,8 +2,8 @@ from django.shortcuts import render
 import requests
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import FormView
-
-
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 from.forms import WeatherSearchForm
 
 # Create your views here.
@@ -12,18 +12,12 @@ API_KEY = "fe4e885cc104b4114c1fa726c63b1f18"
 
 
 
-
-
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-
 class WeatherSearchView(FormView):
     template_name = 'weather/weather.html'
     form_class = WeatherSearchForm
 
     def form_valid(self, form):
         city = form.cleaned_data['city']
-        # Redirect to the result view with the city as a URL parameter
         return HttpResponseRedirect(reverse('weather_result', kwargs={'city': city}))
 
     
@@ -37,7 +31,7 @@ class WeatherResultView(TemplateView):
 
         try:
             response = requests.get(url)
-            response.raise_for_status()  # Raise an HTTPError for bad responses (4xx or 5xx)
+            response.raise_for_status()
 
             data = response.json()
             context['weather'] = {

@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'et'
 
 TIME_ZONE = 'UTC'
 
@@ -134,7 +134,7 @@ MEDIA_ROOT = BASE_DIR / "uploads"
 MEDIA_URL = "/media/"
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static"
+    BASE_DIR / "frontend/static",
 ]
 
 

@@ -1,15 +1,60 @@
 {%extends 'base.html'%}
-{% load crispy_forms_tags %}
+
 
 
 {% block title %}{{hero.name}}{% endblock title %}
 
 {% block body %}
-<div class="container">
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit">Save</button>
-</form>
-</div>
+
+
+<div class="min-h-screen bg-gray-900 flex items-center justify-center">
+    <form method="post" enctype="multipart/form-data" class="w-full max-w-lg bg-gray-800 p-8 rounded-lg shadow-md dark:bg-gray-900">
+      {% csrf_token %}
+  
+      <!-- Nimi -->
+      <div class="mb-5">
+        <label for="id_name" class="block mb-2 text-sm font-medium text-gray-100 dark:text-gray-300">Nimi</label>
+        <input type="text" name="name" id="id_name" value="{{ hero.name }}" class="shadow-sm bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-100 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+      </div>
+  
+      <!-- Kodanikunimi -->
+      <div class="mb-5">
+        <label for="id_civillian_name" class="block mb-2 text-sm font-medium text-gray-100 dark:text-gray-300">Kodanikunimi</label>
+        <input type="text" name="civillian_name" id="id_civillian_name" value="{{ hero.civillian_name }}" class="shadow-sm bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-100 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+      </div>
+  
+      <!-- Vanus -->
+      <div class="mb-5">
+        <label for="id_age" class="block mb-2 text-sm font-medium text-gray-100 dark:text-gray-300">Vanus</label>
+        <input type="number" name="age" id="id_age" value="{{ hero.age }}" class="shadow-sm bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-100 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+      </div>
+  
+      <!-- Asukoht -->
+      <div class="mb-5">
+        <label for="id_location" class="block mb-2 text-sm font-medium text-gray-100 dark:text-gray-300">Asukoht</label>
+        <input type="text" name="location" id="id_location" value="{{ hero.location }}" class="shadow-sm bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-100 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+      </div>
+  
+      <!-- Kirjeldus -->
+      <div class="mb-5">
+        <label for="id_description" class="block mb-2 text-sm font-medium text-gray-100 dark:text-gray-300">Kirjeldus</label>
+        <textarea name="description" id="id_description" rows="5" class="shadow-sm bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-100 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">{{ hero.description }}</textarea>
+      </div>
+      
+  
+      <!-- Pildi üleslaadimise väli -->
+      <div class="mb-5">
+        <label for="id_image" class="block mb-2 text-sm font-medium text-gray-100 dark:text-gray-300">Pilt</label>
+        <input type="file" name="image" id="id_image" class="shadow-sm bg-gray-700 border border-gray-600 text-gray-100 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500 dark:text-gray-100 dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light">
+        {% if hero.image %}
+        <p class="text-sm font-medium text-gray-100 dark:text-gray-300 mt-1">Hetkel: {{ hero.image.url }}</p>
+        {% endif %}
+      </div>
+  
+      <!-- Nupp -->
+      <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        Salvesta
+      </button>
+    </form>
+  </div>
 {% endblock body %}
